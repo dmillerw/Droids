@@ -1,0 +1,6 @@
+{
+  "parent": "droids:block/charging_station",
+  "textures": {
+    "layer0": "droids:blocks/blank"
+  }
+}

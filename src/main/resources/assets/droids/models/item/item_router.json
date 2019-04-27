@@ -1,0 +1,6 @@
+{
+  "parent": "droids:block/item_router",
+  "textures": {
+    "layer0": "droids:blocks/blank"
+  }
+}

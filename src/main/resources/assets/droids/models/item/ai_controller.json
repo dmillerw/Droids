@@ -1,0 +1,6 @@
+{
+  "parent": "droids:block/ai_controller",
+  "textures": {
+    "layer0": "droids:blocks/blank"
+  }
+}
