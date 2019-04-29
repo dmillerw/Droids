@@ -1,8 +1,8 @@
 package me.dmillerw.droids.common.item;
 
-import me.dmillerw.droids.client.gui.GuiTest;
-import me.dmillerw.droids.client.gui.modal.GuiModalLayout;
+import me.dmillerw.droids.common.ModInfo;
 import me.dmillerw.droids.common.entity.EntityDroid;
+import me.dmillerw.flow.modal.GuiModalLayout;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
@@ -79,7 +80,7 @@ public class ItemConfigurator extends BaseItem {
 //            return EnumActionResult.SUCCESS;
 //        }
 
-        Minecraft.getMinecraft().displayGuiScreen(new GuiModalLayout());
+        Minecraft.getMinecraft().displayGuiScreen(new GuiModalLayout(new ResourceLocation(ModInfo.ID, "textures/gui/modal.png")));
 
         return EnumActionResult.FAIL;
     }
