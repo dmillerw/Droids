@@ -6,7 +6,7 @@ import me.dmillerw.droids.api.IActionProvider;
 import me.dmillerw.droids.api.INetworkable;
 import me.dmillerw.droids.api.IPlayerOwned;
 import me.dmillerw.droids.api.action.BaseAction;
-import me.dmillerw.droids.common.action.ServerActionHandler;
+import me.dmillerw.droids.common.handler.ActionHandler;
 import me.dmillerw.droids.common.entity.EntityDroid;
 import me.dmillerw.droids.common.item.ItemUpgradeCard;
 import me.dmillerw.droids.common.util.PathFinder;
@@ -149,7 +149,7 @@ public class TileAIController extends TileCore implements IAIController, IPlayer
         if (shutdown)
             return;
 
-        ServerActionHandler handler = ServerActionHandler.get(world);
+        ActionHandler handler = ActionHandler.get(world);
 
         List<EntityDroid> droids = world.getEntities(EntityDroid.class, (droid) -> droid != null && droid.getDistanceSq(this.pos) <= 32);
         for (EntityDroid droid : droids) {
@@ -295,7 +295,7 @@ public class TileAIController extends TileCore implements IAIController, IPlayer
     public void queueBlockClaim(BlockPos block, BaseAction action) {
         action.setProviderOrigin(getTilePosition());
 
-        ServerActionHandler handler = ServerActionHandler.get(world);
+        ActionHandler handler = ActionHandler.get(world);
         handler.queueBlockAction(block, action);
         handler.save();
     }

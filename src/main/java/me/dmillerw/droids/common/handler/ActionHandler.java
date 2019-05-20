@@ -1,4 +1,4 @@
-package me.dmillerw.droids.common.action;
+package me.dmillerw.droids.common.handler;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
-public class ServerActionHandler extends WorldSavedData {
+public class ActionHandler extends WorldSavedData {
 
     private static class EntityKey {
 
@@ -75,15 +75,15 @@ public class ServerActionHandler extends WorldSavedData {
         }
     }
     
-    private static final String KEY = "droids:ServerActionHandler";
+    private static final String KEY = "droids:ActionHandler";
 
-    private static Map<Integer, ServerActionHandler> instanceMap = Maps.newHashMap();
+    private static Map<Integer, ActionHandler> instanceMap = Maps.newHashMap();
 
-    public static ServerActionHandler get(World world) {
+    public static ActionHandler get(World world) {
         int dimension = world.provider.getDimension();
-        ServerActionHandler handler = instanceMap.get(dimension);
+        ActionHandler handler = instanceMap.get(dimension);
         if (handler == null) {
-            handler = new ServerActionHandler();
+            handler = new ActionHandler();
             handler.setDimension(dimension);
             instanceMap.put(dimension, handler);
         }
@@ -91,7 +91,7 @@ public class ServerActionHandler extends WorldSavedData {
         return handler;
     }
 
-    private static void save(ServerActionHandler handler) {
+    private static void save(ActionHandler handler) {
         instanceMap.put(handler.dimension, handler);
 
         World world = DimensionManager.getWorld(handler.dimension);
@@ -102,9 +102,9 @@ public class ServerActionHandler extends WorldSavedData {
     public static void onWorldLoad(WorldEvent.Load event) {
         int dimension = event.getWorld().provider.getDimension();
 
-        ServerActionHandler handler = (ServerActionHandler) event.getWorld().loadData(ServerActionHandler.class, KEY);
+        ActionHandler handler = (ActionHandler) event.getWorld().loadData(ActionHandler.class, KEY);
         if (handler == null) {
-            handler = new ServerActionHandler();
+            handler = new ActionHandler();
             handler.setDimension(dimension);
 
             save(handler);
@@ -113,7 +113,7 @@ public class ServerActionHandler extends WorldSavedData {
 
     private int dimension;
 
-    public ServerActionHandler() {
+    public ActionHandler() {
         super(KEY);
     }
 
@@ -256,7 +256,7 @@ public class ServerActionHandler extends WorldSavedData {
         int id = nextId();
         action.setActionId(id);
 
-        final ServerActionHandler.EntityKey key = new ServerActionHandler.EntityKey(entity);
+        final ActionHandler.EntityKey key = new ActionHandler.EntityKey(entity);
 
 //        if (isEntityClaimed(action.getProviderOrigin(), key))
 //            return;

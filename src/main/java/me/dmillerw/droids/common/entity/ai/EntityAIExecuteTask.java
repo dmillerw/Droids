@@ -2,7 +2,7 @@ package me.dmillerw.droids.common.entity.ai;
 
 import me.dmillerw.droids.api.IAIController;
 import me.dmillerw.droids.api.action.BaseAction;
-import me.dmillerw.droids.common.action.ServerActionHandler;
+import me.dmillerw.droids.common.handler.ActionHandler;
 import me.dmillerw.droids.common.entity.EntityDroid;
 import me.dmillerw.droids.common.item.ItemConfigurator;
 import net.minecraft.entity.ai.EntityAIBase;
@@ -38,7 +38,7 @@ public class EntityAIExecuteTask extends EntityAIBase {
         if (ItemConfigurator.debugPauseDroidTicks)
             return;
 
-        ServerActionHandler handler = ServerActionHandler.get(droid.world);
+        ActionHandler handler = ActionHandler.get(droid.world);
         int actionId = droid.getAction();
 
         if (actionId == -1)

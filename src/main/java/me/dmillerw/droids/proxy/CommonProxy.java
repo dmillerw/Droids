@@ -2,7 +2,7 @@ package me.dmillerw.droids.proxy;
 
 import me.dmillerw.droids.Droids;
 import me.dmillerw.droids.common.ModInfo;
-import me.dmillerw.droids.common.action.ServerActionHandler;
+import me.dmillerw.droids.common.handler.ActionHandler;
 import me.dmillerw.droids.common.block.*;
 import me.dmillerw.droids.common.entity.EntityDroid;
 import me.dmillerw.droids.common.event.WorldEventHandler;
@@ -32,7 +32,7 @@ public class CommonProxy implements IProxy {
 
         MinecraftForge.EVENT_BUS.register(WorldEventHandler.class);
         MinecraftForge.EVENT_BUS.register(DroidTracker.class);
-        MinecraftForge.EVENT_BUS.register(ServerActionHandler.class);
+        MinecraftForge.EVENT_BUS.register(ActionHandler.class);
 
         GameRegistry.registerTileEntity(TileAIController.class, new ResourceLocation(ModInfo.ID, BlockAIController.NAME));
         GameRegistry.registerTileEntity(TileChargingStation.class, new ResourceLocation(ModInfo.ID, BlockChargingStation.NAME));
